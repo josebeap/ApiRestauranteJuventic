@@ -29,7 +29,7 @@ namespace ApiRestauranteJuventic.Controllers
         public JsonResult Get()
         {
             string query = @"
-                        select id,nombre,precio,descripcion,img, id_restaurante from plato
+                        select id,nombre,precio,descripcion,descripcion_larga,img, id_restaurante from plato
             ";
 
             DataTable table = new DataTable();
