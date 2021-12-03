@@ -14,11 +14,11 @@ namespace ApiRestauranteJuventic.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PlatoController : ControllerBase
+    public class ReservaController : ControllerBase
     {
         private readonly IConfiguration _configuration;
         private readonly IWebHostEnvironment _env;
-        public PlatoController(IConfiguration configuration, IWebHostEnvironment env)
+        public ReservaController(IConfiguration configuration, IWebHostEnvironment env)
         {
             _configuration = configuration;
             _env = env;
@@ -30,7 +30,7 @@ namespace ApiRestauranteJuventic.Controllers
         public JsonResult Get()
         {
             string query = @"
-                        select id,nombre,precio,descripcion,descripcion_larga,img,img2, id_restaurante from plato
+                        select id,id_cliente,id_servicio,fecha from reserva
             ";
 
             DataTable table = new DataTable();
@@ -62,7 +62,7 @@ namespace ApiRestauranteJuventic.Controllers
         public JsonResult Delete(int id)
         {
             string query = @"
-                        delete from plato 
+                        delete from reserva 
                         where id=@id;
                         
             ";
@@ -92,17 +92,15 @@ namespace ApiRestauranteJuventic.Controllers
 
 
         [HttpPut]
-        public JsonResult Put(Plato plato)
+        public JsonResult Put(Reserva reserva)
         {
             string query = @"
-                        update plato set 
-                        nombre=@nombre,
-                        precio=@precio,
+                        update reserva set 
+                        id_cliente=@id_cliente,
+                        id_servicio=@id_servicio,
                         descripcion=@descripcion,
-                        descripcion_larga=@descripcion_larga,
-                        img=@img,
-                        img2=@img2
-                        where id =@id;
+                        fecha=@fecha
+                        where id=@id;
                         
             ";
 
@@ -114,13 +112,11 @@ namespace ApiRestauranteJuventic.Controllers
                 mycon.Open();
                 using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
                 {
-                    myCommand.Parameters.AddWithValue("@id", plato.id);
-                    myCommand.Parameters.AddWithValue("@nombre", plato.nombre);
-                    myCommand.Parameters.AddWithValue("@precio", plato.precio);
-                    myCommand.Parameters.AddWithValue("@descripcion", plato.descripcion);
-                    myCommand.Parameters.AddWithValue("@descripcion_larga", plato.descripcion_larga);
-                    myCommand.Parameters.AddWithValue("@img", plato.img);
-                    myCommand.Parameters.AddWithValue("@img2", plato.img2);
+                    myCommand.Parameters.AddWithValue("@id", reserva.id);
+                    myCommand.Parameters.AddWithValue("@id_cliente", reserva.id_cliente);
+                    myCommand.Parameters.AddWithValue("@id_servicio", reserva.id_servicio);
+                    myCommand.Parameters.AddWithValue("@descripcion", reserva.descripcion);
+                    myCommand.Parameters.AddWithValue("@fecha", reserva.fecha);
 
 
                     myReader = myCommand.ExecuteReader();
@@ -136,13 +132,13 @@ namespace ApiRestauranteJuventic.Controllers
         //CREACIÓN
 
         [HttpPost]
-        public JsonResult Post(Models.Plato plato)
+        public JsonResult Post(Models.Reserva reserva)
         {
             string query = @"
-                        insert into plato 
-                        (nombre,precio,descripcion,descripcion_larga,img,img2) 
+                        insert into reserva 
+                        (id_cliente,id_servicio,descripcion,fecha) 
                         values
-                         (@nombre,@precio,@descripcion,@descripcion_larga,@img,@img2);
+                        (@id_cliente,@id_servicio,@descripcion,@fecha);
                         
             ";
 
@@ -154,14 +150,10 @@ namespace ApiRestauranteJuventic.Controllers
                 mycon.Open();
                 using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
                 {
-                   
-                    myCommand.Parameters.AddWithValue("@id", plato.id);
-                    myCommand.Parameters.AddWithValue("@nombre", plato.nombre);
-                    myCommand.Parameters.AddWithValue("@precio", plato.precio);
-                    myCommand.Parameters.AddWithValue("@descripcion", plato.descripcion);
-                    myCommand.Parameters.AddWithValue("@descripcion_larga", plato.descripcion_larga);
-                    myCommand.Parameters.AddWithValue("@img", plato.img);
-                    myCommand.Parameters.AddWithValue("@img2", plato.img2);
+                    myCommand.Parameters.AddWithValue("@id_cliente", reserva.id_cliente);
+                    myCommand.Parameters.AddWithValue("@id_servicio", reserva.id_servicio);
+                    myCommand.Parameters.AddWithValue("@descripcion", reserva.descripcion);
+                    myCommand.Parameters.AddWithValue("@fecha", reserva.fecha);
 
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
@@ -173,5 +165,7 @@ namespace ApiRestauranteJuventic.Controllers
 
             return new JsonResult("Added Successfully");
         }
+
+
     }
 }

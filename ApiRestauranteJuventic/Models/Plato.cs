@@ -13,6 +13,7 @@ namespace ApiRestauranteJuventic.Models
         public string descripcion { get; set; }
         public string descripcion_larga { get; set; }
         public string img { get; set; }
+        public string img2 { get; set; }
         public string id_restaurante { get; set; }
     }
 }

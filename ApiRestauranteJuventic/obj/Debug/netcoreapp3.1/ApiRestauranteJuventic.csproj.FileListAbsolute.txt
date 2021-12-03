@@ -35,3 +35,4 @@ C:\ProyectoApiJuventic\ApiRestauranteJuventic\ApiRestauranteJuventic\ApiRestaura
 C:\ProyectoApiJuventic\ApiRestauranteJuventic\ApiRestauranteJuventic\ApiRestauranteJuventic\obj\Debug\netcoreapp3.1\ApiRestauranteJuventic.dll
 C:\ProyectoApiJuventic\ApiRestauranteJuventic\ApiRestauranteJuventic\ApiRestauranteJuventic\obj\Debug\netcoreapp3.1\ApiRestauranteJuventic.pdb
 C:\ProyectoApiJuventic\ApiRestauranteJuventic\ApiRestauranteJuventic\ApiRestauranteJuventic\obj\Debug\netcoreapp3.1\ApiRestauranteJuventic.genruntimeconfig.cache
+C:\ProyectoApiJuventic\ApiRestauranteJuventic\ApiRestauranteJuventic\ApiRestauranteJuventic\obj\Debug\netcoreapp3.1\ApiRestauranteJuventic.csproj.AssemblyReference.cache
