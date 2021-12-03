@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QtU0BmcEHAoLq4FYcxO9qPrwWPVbIufC4paLWJ/zCcp81/bLmjsAqI8K/whp0HgrQIRboe5tApSIXtwJZilfFQ==",
+  "dgSpecHash": "AGduEguVhXXS+x2JWEvbprxvAzrXlk6Kai1dHxEOrjTztKTeUdzc+RdK6j2G9GbAodzg5DzI/La4/2iFs7s0Nw==",
   "success": true,
   "projectFilePath": "C:\\ProyectoApiJuventic\\ApiRestauranteJuventic\\ApiRestauranteJuventic\\ApiRestauranteJuventic\\ApiRestauranteJuventic.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,7 @@
     "C:\\Users\\joseb\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.16\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.16.nupkg.sha512",
     "C:\\Users\\joseb\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\joseb\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\joseb\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.11.1\\microsoft.visualstudio.azure.containers.tools.targets.1.11.1.nupkg.sha512",
     "C:\\Users\\joseb\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\joseb\\.nuget\\packages\\mysql.data\\8.0.27\\mysql.data.8.0.27.nupkg.sha512",
     "C:\\Users\\joseb\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
