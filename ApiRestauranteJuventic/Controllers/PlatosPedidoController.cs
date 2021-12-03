@@ -14,23 +14,23 @@ namespace ApiRestauranteJuventic.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ServicioController : ControllerBase
+    public class PlatosPedidoController : ControllerBase
     {
         private readonly IConfiguration _configuration;
         private readonly IWebHostEnvironment _env;
-        public ServicioController(IConfiguration configuration, IWebHostEnvironment env)
+        public PlatosPedidoController(IConfiguration configuration, IWebHostEnvironment env)
         {
             _configuration = configuration;
             _env = env;
         }
 
 
-        // GET: api/<RestauranteController>
+        // GET: api/
         [HttpGet]
         public JsonResult Get()
         {
             string query = @"
-                        select id,titulo,descripcion,img, id_restaurante from servicio
+                        select id,id_pedido,cantidad from platos_pedido
             ";
 
             DataTable table = new DataTable();
@@ -54,14 +54,15 @@ namespace ApiRestauranteJuventic.Controllers
 
 
         //////////////////////////////////////////
-   
+
+
 
         //ELIMINACION
         [HttpDelete("{id}")]
         public JsonResult Delete(int id)
         {
             string query = @"
-                        delete from servicio 
+                        delete from platos_pedido 
                         where id=@id;
                         
             ";
@@ -91,13 +92,12 @@ namespace ApiRestauranteJuventic.Controllers
 
 
         [HttpPut]
-        public JsonResult Put(Servicio servicio)
+        public JsonResult Put(PlatosPedido platos_pedido)
         {
             string query = @"
-                        update servicio set 
-                        titulo=@titulo,
-                        descripcion=@descripcion,
-                        img=@img
+                        update reserva set 
+                        id_pedido=@id_pedido,
+                        cantidad=@cantidad
                         where id=@id;
                         
             ";
@@ -110,10 +110,9 @@ namespace ApiRestauranteJuventic.Controllers
                 mycon.Open();
                 using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
                 {
-                    myCommand.Parameters.AddWithValue("@id", servicio.id);
-                    myCommand.Parameters.AddWithValue("@titulo", servicio.titulo);
-                    myCommand.Parameters.AddWithValue("@descripcion", servicio.descripcion);
-                    myCommand.Parameters.AddWithValue("@img", servicio.img);
+                    myCommand.Parameters.AddWithValue("@id", platos_pedido.id);
+                    myCommand.Parameters.AddWithValue("@id_pedido", platos_pedido.id_pedido);
+                    myCommand.Parameters.AddWithValue("@cantidad", platos_pedido.cantidad);
 
 
                     myReader = myCommand.ExecuteReader();
@@ -129,13 +128,13 @@ namespace ApiRestauranteJuventic.Controllers
         //CREACIÓN
 
         [HttpPost]
-        public JsonResult Post(Models.Servicio servicio)
+        public JsonResult Post(Models.PlatosPedido platos_pedido)
         {
             string query = @"
-                        insert into servicio 
-                        (titulo,descripcion,img) 
+                        insert into reserva 
+                        (id_cliente,id_servicio,descripcion,fecha) 
                         values
-                         (@titulo,@descripcion,@img);
+                        (@id_cliente,@id_servicio,@descripcion,@fecha);
                         
             ";
 
@@ -147,9 +146,8 @@ namespace ApiRestauranteJuventic.Controllers
                 mycon.Open();
                 using (MySqlCommand myCommand = new MySqlCommand(query, mycon))
                 {
-                    myCommand.Parameters.AddWithValue("@titulo", servicio.titulo);
-                    myCommand.Parameters.AddWithValue("@descripcion", servicio.descripcion);
-                    myCommand.Parameters.AddWithValue("@img", servicio.img);
+                    myCommand.Parameters.AddWithValue("@id_pedido", platos_pedido.id_pedido);
+                    myCommand.Parameters.AddWithValue("@cantidad", platos_pedido.cantidad);
 
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
